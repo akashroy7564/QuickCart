@@ -87,20 +87,20 @@ export default function Home() {
 
 
     const categories = [
-        { name: "Dairy & Bread ", value:"dairy",  image: "milk &Dairy.png" },
-        { name: "Vegetables",  value:" vegetable", image: "vegetable.png" },
-        { name: "Cold Drinks & Juices",  value:"Beverage",image: "cold-drink.png" },
-        { name: "Snack", value:"Snack",  image: "snacks.png" },
-        { name: "Breakfast & Instant Food", value:"instant-food",  image: "maggies.png" },
-        { name: "Sweet Tooth", value:"Ice_cream",  image: "Ice-Cream.png" },
-        { name: "Bakery & Biscuits", value:"Biscuits",  image: "biscuits.png" },
-        { name: "Tea, Coffee & Milk Drinks", value:"Tea",  image: "tea&Coffee.png" },
-        { name: "Atta, Rice & Dal", value:"Rice",  image: "Atta rice.png" },
-        { name: "Masala, Oil & Sugar", value:"masala",  image: "masala oil.png" },
-        { name: "Sauces & Spreads", value:"Sauces",  image: "Sauces & Spread.png" },
-        { name: "Cleaning Essentials", value:" House-care",  image: "cleaning.png" },
-        { name: "Home & Office", value:"",  image: "/icons/home.png" },
-        { name: "personal-care", value:"",  image: "/icons/personal.png" },
+        { name: "Dairy & Bread ", value: "dairy", image: "milk &Dairy.png" },
+        { name: "Vegetables", value: " vegetable", image: "vegetable.png" },
+        { name: "Cold Drinks & Juices", value: "Beverage", image: "cold-drink.png" },
+        { name: "Snack", value: "Snack", image: "snacks.png" },
+        { name: "Breakfast & Instant Food", value: "instant-food", image: "maggies.png" },
+        { name: "Sweet Tooth", value: "Ice_cream", image: "Ice-Cream.png" },
+        { name: "Bakery & Biscuits", value: "Biscuits", image: "biscuits.png" },
+        { name: "Tea, Coffee & Milk Drinks", value: "Tea", image: "tea&Coffee.png" },
+        { name: "Atta, Rice & Dal", value: "Rice", image: "Atta rice.png" },
+        { name: "Masala, Oil & Sugar", value: "masala", image: "masala oil.png" },
+        { name: "Sauces & Spreads", value: "Sauces", image: "Sauces & Spread.png" },
+        { name: "Cleaning Essentials", value: " House-care", image: "cleaning.png" },
+        { name: "Home & Office", value: "", image: "/icons/home.png" },
+        { name: "personal-care", value: "", image: "/icons/personal.png" },
     ];
 
 
@@ -110,7 +110,7 @@ export default function Home() {
 
 
     return (
-        <div className="bg-gray-50 " >
+        <div className="bg-green-50 " >
 
 
 
@@ -139,6 +139,11 @@ export default function Home() {
 
             {/* CATEGORY SECTION Starts */}
             <div className="max-w-7xl mx-auto px-4 py-6">
+                <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-700 bg-clip-text text-transparent">
+                        Shop by Category
+                    </h2>
+                </div>
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 gap-4">
 
                     {categories.map((cat, index) => (
@@ -147,7 +152,7 @@ export default function Home() {
                             onClick={() => setCategory(cat.value)}
                             className="flex flex-col items-center cursor-pointer group"
                         >
-                            <div className="bg-blue-100 rounded-xl p-2 shadow-sm group-hover:shadow-md transition">
+                            <div className="bg-green-200 rounded-xl p-2 shadow-sm group-hover:shadow-md transition">
                                 <img
                                     src={cat.image}
                                     alt={cat.name}

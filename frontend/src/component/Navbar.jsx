@@ -43,34 +43,47 @@ export default function Navbar({ search, setSearch, category, setCategory }) {
 
     }
 
-    const handleClick = () => {
-        setIson(!ison);
-    }
+    // const handleClick = () => {
+    //     setIson(!ison);
+    // }
 
 
     return (
-        <nav className="sticky top-0 left-0 w-full bg-white shadow-md z-50">
-            <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+       <nav className="sticky top-0 left-0 w-full bg-white shadow-md z-50">
 
-                {/* LOGO */}
-                <h1 className="text-2xl font-bold text-blue-600">
-                    QuickCart
-                </h1>
-                {/* Search Function */}
-                <input placeholder="Search..."
+    <div className="max-w-7xl mx-auto px-4 py-3">
+
+        <div className="flex items-center justify-between gap-4">
+
+            {/* LOGO */}
+            <div className="flex-shrink-0">
+                <img
+                    src="/Logo.png"
+                    alt="QuickCart Logo"
+                    className="w-44 h-12 object-contain"
+                />
+            </div>
+
+            {/* SEARCH */}
+            <div className="hidden md:flex flex-1 max-w-md">
+                <input
+                    placeholder="Search..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="w-1/4 px-5 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200" />
+                    className="w-full px-5 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+            </div>
 
-                {/* category */}
+            {/* CATEGORY */}
+            <div className="hidden lg:block">
                 <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-40 px-5 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                    className="w-52 px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
                 >
-                    <option value="">All category</option>  
-                    <option value="Dairy & Bread">Dairy & Bread</option>  
-                    <option value="Vegetables">Vegetables</option>  
+                    <option value="">All category</option>
+                    <option value="Dairy & Bread">Dairy & Bread</option>
+                    <option value="Vegetables">Vegetables</option>
                     <option value="Snack">Snack</option>
                     <option value="Sweet Tooth">Sweet Tooth</option>
                     <option value="Breakfast & Instant Food">Breakfast & Instant Food</option>
@@ -84,93 +97,87 @@ export default function Navbar({ search, setSearch, category, setCategory }) {
                     <option value="Sauces & Spreads">Sauces & Spreads</option>
                     <option value="personal-care">personal-care</option>
                     <option value="Dry-fruits">Dry-fruits</option>
-
                 </select>
-
-                {/* NAV LINKS */}
-                <div className="flex items-center gap-6">
-
-                    {/* {
-                        !userId ? (
-                            <>
-                                <Link
-                                    to="/"
-                                    className="text-gray-700 hover:text-blue-600 font-medium"
-                                >
-                                    Home
-                                </Link>
-                            </>
-                        ) : (
-                            <>
-                                <Link
-                                    to="/home"
-                                    className="text-gray-700 hover:text-blue-600 font-medium"
-                                >
-                                    Home
-                                </Link>
-                            </>
-                        )
-                    } */}
-
-
-                    <Link
-                        to="/"
-                        className="text-gray-700 hover:text-blue-600 font-medium"
-                    >
-                        Home
-                    </Link>
-
-                    <Link
-                        to="/products"
-                        className="text-gray-700 hover:text-blue-600 font-medium"
-                    >
-                        Products
-                    </Link>
-
-                    {/* LOGIN BUTTON */}
-
-                    {
-                        userId ? (
-                            <>
-
-                                <Link to="/cart" className="relative w-9 h-9 flex items-center justify-center bg-gray-200 rounded-full hover:bg-gray-300">
-                                    <span>🛒</span>
-                                    {
-                                        cartCount > 0 && (
-                                            <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-1 rounded">{cartCount}</span>
-                                        )
-                                    }
-                                </Link>
-                                <button onClick={logout} className="bg-red-500 text-white px-4 py-2 rounded-lg shadow hover:bg-red-600 hover:scale-105 transition-all duration-200">
-                                    Logout</button>
-                            </>
-                        ) : (
-                            <>
-                                <Link to="/login" className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Login</Link>
-                                <Link to="/signup" className="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">SignUp</Link>
-                            </>
-                        )
-                    }
-
-
-
-
-
-
-
-
-                    {/* Cart ICON */}
-                    {/* <Link to="/cart" className="relative w-9 h-9 flex items-center justify-center bg-gray-200 rounded-full hover:bg-gray-300">
-                        <span>🛒</span>
-                        {
-                            cartCount > 0 && (
-                                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-1 rounded">{cartCount}</span>
-                            )
-                        }
-                    </Link> */}
-
-                </div>
             </div>
-        </nav>
+
+            {/* NAV LINKS */}
+            <div className="flex items-center gap-4 flex-shrink-0">
+
+                <Link
+                    to="/"
+                    className="text-gray-700 hover:text-green-600 font-medium transition"
+                >
+                    Home
+                </Link>
+
+                <Link
+                    to="/products"
+                    className="text-gray-700 hover:text-green-600 font-medium transition"
+                >
+                    Products
+                </Link>
+
+                <Link
+                    to="/about"
+                    className="text-gray-700 hover:text-green-600 font-medium transition"
+                >
+                    About
+                </Link>
+
+                {
+                    userId ? (
+                        <>
+                            {/* CART */}
+                            <Link
+                                to="/cart"
+                                className="relative w-10 h-10 flex items-center justify-center bg-green-100 rounded-full hover:bg-green-200 transition"
+                            >
+                                <span className="text-lg">🛒</span>
+
+                                {
+                                    cartCount > 0 && (
+                                        <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-1.5 py-0.5 rounded-full">
+                                            {cartCount}
+                                        </span>
+                                    )
+                                }
+                            </Link>
+
+                            {/* LOGOUT */}
+                            <button
+                                onClick={logout}
+                                className="bg-red-500 text-white px-4 py-2 rounded-xl hover:bg-red-600 transition"
+                            >
+                                Logout
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            {/* LOGIN */}
+                            <Link
+                                to="/login"
+                                className="bg-gradient-to-r from-green-600 to-emerald-700 text-white px-4 py-2 rounded-xl hover:scale-105 transition"
+                            >
+                                Login
+                            </Link>
+
+                            {/* SIGNUP */}
+                            <Link
+                                to="/signup"
+                                className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-xl hover:scale-105 transition"
+                            >
+                                SignUp
+                            </Link>
+                        </>
+                    )
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
     )
 }

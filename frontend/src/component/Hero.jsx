@@ -10,13 +10,13 @@ const slides = [
     },
     {
         id: 2,
-        image: "https://images.unsplash.com/photo-1586201375761-83865001e31c",
-        title: "Fresh Food Delivered 🍔",
-        subtitle: "Hot & fresh at your doorstep",
+        image: "About_poster.png",
+        title: "",
+        subtitle: "",
     },
     {
         id: 3,
-        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+        image: "happyshopping.png",
         title: "Tech Deals 🔥",
         subtitle: "Best gadgets at lowest prices",
     },

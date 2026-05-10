@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "../api/axios";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Navbar from "../component/Navbar";
 import { Link } from "react-router";
 
@@ -11,6 +11,8 @@ export default function ProductDetails() {
     const [search, setSearch] = useState("");                //GOing from home
     const [category, setCategory] = useState("");
     const [showMsg, setShowMsg] = useState(false);
+    
+    const navigate = useNavigate();
 
     const loadProduct = async () => {
         const response = await api.get(`/products?search=${search}&category=${category}`)
@@ -74,18 +76,73 @@ export default function ProductDetails() {
 
 
 
+    const BuyNow = async (productId) => {
+        const userId = localStorage.getItem("userId");
+        if (!userId) {
+            alert("please login first");
+            setShowLoginModal(true);
+            return;
+        }
+        const res = await api.post(`/cart/add`, { userId, productId });
+        const total = res.data.cart.items.reduce(
+            (sum, item) => sum + item.productId.price * item.quantity, 0
+        );
+
+        
+        navigate("/cart")
+
+        localStorage.setItem("cartCount", total)
+        window.dispatchEvent(new Event("cartUpdated"));
+
+    }
+
+
+
     return (
-        <>
+        <div>
+            {/* NAVBAR */}
             <Navbar
                 search={search}
                 setSearch={setSearch}
                 category={category}
                 setCategory={setCategory}
             />
+
+            {/* Show Clickable router */}
+
+            <div className="max-w-7xl mx-auto px-4 py-4">
+
+                <div className="flex items-center gap-2 text-sm text-gray-600">
+
+                    <Link
+                        to="/"
+                        className="hover:text-green-600 transition"
+                    >
+                        Home
+                    </Link>
+
+                    <span>/</span>
+
+                    <Link
+                        to="/products"
+                        className="hover:text-green-600 transition"
+                    >
+                        Products
+                    </Link>
+
+                    <span>/</span>
+
+                    <span className="text-green-700 font-semibold">
+                        Product Detail
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
             <div className="max-w-6xl mx-auto p-6 grid md:grid-cols-2 gap-10 ">
-
-
-
                 {/* IMAGE SECTION */}
                 <div className="border border-gray-300 bg-white p-6 rounded-lg flex items-center justify-center overflow-hidden">
                     <img
@@ -98,7 +155,9 @@ export default function ProductDetails() {
 
                 {/* PRODUCT INFO */}
                 <div className="flex flex-col justify-center space-y-4 ">
-
+                    <div className=" w-24 rounded bg-gray-500 text-center text-white font-bold">
+                        <p >{product.category}</p>
+                    </div>
                     <h1 className="text-3xl font-bold text-gray-800">
                         {product.title}
                     </h1>
@@ -110,25 +169,59 @@ export default function ProductDetails() {
                     <h2 className="text-2xl font-bold text-blue-600">
                         ₹{product.price}
                     </h2>
+                    <p className="text-gray-500">
+                        <span className="text-gray-600">Product_id:- </span>{product._id}
+                    </p>
 
                     <button onClick={() => addToCart(product._id)}
-                        className="w-48 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        className="w-92 bg-blue-700 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
                         Add to Cart 🛒
                     </button>
 
-                    <div className="border border-gray-300 bg-white p-6 rounded-lg  items-center justify-center overflow-hidden">
-                        <p className="text-gray-700">We Deliver product in blinking of eyes.</p>
-                        <p className="text-gray-700">We Deliver product in blinking of eyes.</p>
-                        <p className="text-gray-700">We Deliver product in blinking of eyes.</p>
-                        <p className="text-gray-700">We Deliver product in blinking of eyes.</p>
-                        <p className="text-gray-700">We Deliver product in blinking of eyes.</p>
-                        <p className="text-gray-700">We Deliver product in blinking of eyes.</p>
-                        <p className="text-gray-700">We Deliver product in blinking of eyes.</p>
-                        <p className="text-gray-700">We Deliver product in blinking of eyes.</p>
-                        <p className="text-gray-700">We Deliver product in blinking of eyes.</p>
-                        <p className="text-gray-700">We Deliver product in blinking of eyes.</p>
-                        <p className="text-gray-700">We Deliver product in blinking of eyes.</p>
-                        
+                    <button onClick={() => BuyNow(product._id)}
+                        className="w-92 bg-green-700 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                        Buy Now
+                    </button>
+
+                    <br />
+
+
+                    {/* Our policy */}
+
+                    <div>
+
+                        <h2 className="text-3xl font-bold text-gray-800 mb-8">
+                            Why Choose QuickCart?
+                        </h2>
+
+                        <div className="space-y-5">
+
+                            <div className="bg-white shadow-md rounded-2xl p-5 hover:shadow-xl hover:scale-105 transition duration-300">
+                                <p className="text-lg font-medium text-gray-700">
+                                    ✔ 100% Genuine Products
+                                </p>
+                            </div>
+
+                            <div className="bg-white shadow-md rounded-2xl p-5 hover:shadow-xl hover:scale-105 transition duration-300">
+                                <p className="text-lg font-medium text-gray-700">
+                                    ✔ Best Price Guarantee
+                                </p>
+                            </div>
+
+                            <div className="bg-white shadow-md rounded-2xl p-5 hover:shadow-xl hover:scale-105 transition duration-300">
+                                <p className="text-lg font-medium text-gray-700">
+                                    ✔ Minimal Delivery Charges Across India
+                                </p>
+                            </div>
+
+                            <div className="bg-white shadow-md rounded-2xl p-5 hover:shadow-xl hover:scale-105 transition duration-300">
+                                <p className="text-lg font-medium text-gray-700">
+                                    ✔ Trusted Since 2004
+                                </p>
+                            </div>
+
+                        </div>
+
                     </div>
 
 
@@ -143,7 +236,7 @@ export default function ProductDetails() {
 
                 {/* Title */}
                 <h1 className="text-2xl font-bold text-gray-800 mb-8">
-                    🔥Home Products
+                    🔥Related Products
                 </h1>
 
                 {/* Grid */}
@@ -219,7 +312,7 @@ export default function ProductDetails() {
 
 
 
-        </>
+        </div>
     );
 
 

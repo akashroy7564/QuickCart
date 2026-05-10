@@ -54,7 +54,7 @@ export default function Product() {
 
 
     return (
-        <div className="bg-gray-100">
+        <div className="bg-green-50">
             {/* NAVBAR */}
             <Navbar
                 search={search}
@@ -62,6 +62,29 @@ export default function Product() {
                 category={category}
                 setCategory={setCategory}
             />
+
+            <div className="max-w-7xl mx-auto px-4 py-4">
+
+                <div className="flex items-center gap-2 text-sm text-gray-600">
+
+                    <Link
+                        to="/"
+                        className="hover:text-green-600 transition"
+                    >
+                        Home
+                    </Link>
+
+                    <span>/</span>
+
+                    <Link
+                        to="/products"
+                        className="hover:text-green-600 transition"
+                    >
+                        Products
+                    </Link>    
+                </div>
+            </div>
+
 
             {/* product GRID */}
 
@@ -84,11 +107,11 @@ export default function Product() {
                             {/* Image */}
                             <div className="h-68 flex items-center justify-center bg-white border border-gray-300 ">
                                 <Link to={`/product/${p._id}`}>
-                                <img
-                                    src={`http://localhost:5001${p.image}`}
-                                    alt={p.title}
-                                    className="h-64 w-50 object-contain overflow-hidden transition-transform duration-500 hover:scale-120 overflow-hidden"
-                                /> </Link>
+                                    <img
+                                        src={`http://localhost:5001${p.image}`}
+                                        alt={p.title}
+                                        className="h-64 w-50 object-contain overflow-hidden transition-transform duration-500 hover:scale-120 overflow-hidden"
+                                    /> </Link>
 
                             </div>
 

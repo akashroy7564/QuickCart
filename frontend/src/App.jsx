@@ -15,6 +15,7 @@ import Checkout from "./pages/Checkout.jsx";
 import OrderSuccess from "./pages/OrderSuccess.jsx"
 import Orders from "./admin/Order.jsx";
 import Contact from "./admin/Contact.jsx";
+import About from "./pages/About.jsx";
 
 
 
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
   {path:"/checkAddress", element: <CheckoutAddress/>},
   {path:"/checkout", element: <Checkout/>},
   {path:"/success/:id", element: <OrderSuccess/>},
+  {path:"/about",element:<About/>},
 
   
 
@@ -39,7 +41,7 @@ const router = createBrowserRouter([
   {path:"products/add", element:<AddProduct/>},
   {path:"products/update/:id", element:<EditProduct/>},
   {path:"orders", element:<Orders/>},
-  {path:"contact",elemen  :<Contact/>}
+  {path:"contact",element :<Contact/>}
   ]
 }
   
