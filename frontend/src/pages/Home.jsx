@@ -70,6 +70,10 @@ export default function Home() {
 
             const response = await api.post("/contact", contact);
             setMsg(response.data.message);
+            setTimeout(()=>{
+                setMsg(false);
+            },2000)
+            
             setContact({
                 name: "",
                 email: "",
@@ -308,7 +312,7 @@ export default function Home() {
 
                     <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
                     {msg && (
-                        <div className="mb-4 text-center text-sm text-blue-600 font-medium">
+                        <div className="mb-4 text-center text-sm text-blue-600 font-medium animate-pulse">
                             {msg}
                         </div>
                     )}

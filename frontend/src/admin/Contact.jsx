@@ -71,7 +71,7 @@ export default function contact() {
                     </div>
                 ))}
 
-                {msg && <div className="fixed top-19 right-6 bg-green-500 text-white px-6 py-3 rounded-lg shadow-xl flex items-center gap-2 animate-bounce">
+                {msg && <div className="fixed top-19 right-6 bg-red-600 text-white px-6 py-3 rounded-lg shadow-xl flex items-center gap-2 animate-bounce">
                     ❎ Message Deleted</div>}
 
             </div>

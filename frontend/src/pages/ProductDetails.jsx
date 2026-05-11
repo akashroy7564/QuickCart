@@ -11,7 +11,7 @@ export default function ProductDetails() {
     const [search, setSearch] = useState("");                //GOing from home
     const [category, setCategory] = useState("");
     const [showMsg, setShowMsg] = useState(false);
-    
+
     const navigate = useNavigate();
 
     const loadProduct = async () => {
