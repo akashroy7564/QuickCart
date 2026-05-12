@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import api from "../api/axios";
 
 
-export default function contact() {
+export default function Contact() {
     const [userMessage, setUserMessage] = useState([])
     const [msg, setMsg] = useState(false)
 
