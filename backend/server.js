@@ -15,7 +15,10 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin:"frontend Url",
+    credentials:true
+}));
 app.use(express.json());
 app.use('/api/auth', authRoutes)
 app.use('/api/products', productsRoutes)
@@ -24,11 +27,6 @@ app.use('/api/address', addressRoutes)
 app.use("/api/order", orderRoutes);
 app.use("/uploads", express.static("uploads"));  //to upload image
 app.use("/api/contact",ContactRoutes)
-
-
-
-
-
 
 
 

@@ -68,3 +68,12 @@ export const loginUser= async(req, res)=>{
 
     }
 }
+
+// get All user 
+export const getAlluser=async (req, res) => {
+    const user=await User.find();
+    res.json(user)
+}
+
+
+
