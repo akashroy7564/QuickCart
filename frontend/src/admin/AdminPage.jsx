@@ -6,8 +6,6 @@ import api from "../api/axios";
 
 export default function AdminLayout() {
 
-    const [change, setChange] = useState(false)
-    const [data, setData] = useState([])
     // const [stats, setStats] = useState({
     //     users: 0,
     //     orders: 0,
@@ -16,11 +14,20 @@ export default function AdminLayout() {
     // })
 
     const [orders, setOrders] = useState([]);
+    const [user,setUser]= useState([]);
+    const [product,setProduct]=useState([])
 
     const loadOrders = async () => {
         try {
-            const res = await api.get("/order/all");
-            setOrders(res.data);
+            const resorder = await api.get("/order/all");
+            setOrders(resorder.data);
+
+            const res = await api.get("/products");
+            setProduct(res.data);
+
+            const resuser = await api.get("/auth/user");
+            setUser(resuser.data);
+
         } catch (err) {
             console.log(err);
         }
@@ -55,7 +62,7 @@ export default function AdminLayout() {
                     <li className="hover:bg-blue-500 text-white px-4 py-2 rounded">
                         <Link
                             to="/admin/orders"
-                            
+
                         >
                             View Orders
                         </Link>
@@ -68,21 +75,67 @@ export default function AdminLayout() {
             </div>
 
             {/* Content */}
-            <div className="flex-1 p-6 bg-gray-100">
-                {orders.map((ord) => {
+            <div className="flex-1 p-6 bg-gray-100 min-h-screen">
 
-                })}
-                <div className="bg-white shadow-md rounded-xl p-6 flex justify-between">
-                    <div>
-                        <h2 className="text-gray-500">Total Orders</h2>
-                        <p className="text-3xl font-bold text-blue-600">{orders.length}</p>
-                    </div>
-                    <span className="text-4xl">📦</span>
-                </div>
-                
-                <Outlet />
+    {/* Cards Section */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
 
+        {/* Card 1 */}
+        <div className="bg-white shadow-lg rounded-2xl p-6 flex items-center justify-between hover:shadow-2xl transition duration-300">
+            <div>
+                <h2 className="text-gray-500 text-sm font-medium">
+                    Total Orders
+                </h2>
+
+                <p className="text-3xl font-bold text-blue-600 mt-2">
+                    {orders.length}
+                </p>
             </div>
+
+            <div className="bg-blue-100 p-4 rounded-full text-4xl">
+                📦
+            </div>
+        </div>
+
+        {/* Card 2 */}
+        <div className="bg-white shadow-lg rounded-2xl p-6 flex items-center justify-between hover:shadow-2xl transition duration-300">
+            <div>
+                <h2 className="text-gray-500 text-sm font-medium">
+                    Total product
+                </h2>
+
+                <p className="text-3xl font-bold text-green-600 mt-2">
+                    {product.length}
+                </p>
+            </div>
+
+            <div className="bg-green-100 p-4 rounded-full text-4xl">
+                💰
+            </div>
+        </div>
+
+        {/* Card 3 */}
+        <div className="bg-white shadow-lg rounded-2xl p-6 flex items-center justify-between hover:shadow-2xl transition duration-300">
+            <div>
+                <h2 className="text-gray-500 text-sm font-medium">
+                    Total User:
+                </h2>
+
+                <p className="text-3xl font-bold text-red-600 mt-2">
+                    {user.length}
+                </p>
+            </div>
+
+            <div className="bg-red-100 p-4 rounded-full text-4xl">
+                👤
+            </div>
+        </div>
+
+    </div>
+
+    <Outlet />
+
+</div>
 
         </div>
     );

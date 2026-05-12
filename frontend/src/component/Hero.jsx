@@ -29,7 +29,7 @@ export default function HeroSlider() {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrent((prev) => (prev + 1) % slides.length);
-        }, 3000);
+        }, 5000);
 
         return () => clearInterval(interval);
     }, []);
@@ -65,7 +65,7 @@ export default function HeroSlider() {
                         <Link
                             to="/products"
                             className="bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold 
-              hover:bg-yellow-500 hover:scale-105 transition duration-300"
+                            hover:bg-yellow-500 hover:scale-105 transition duration-300"
                         >
                             Shop Now
                         </Link>
