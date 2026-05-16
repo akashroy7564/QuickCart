@@ -63,10 +63,7 @@ export default function Login() {
     } catch (err) {
       setMsg(err.response?.data?.message || "An error occured")
     }
-
-    // if (email === "admin@gmail.com" && password === "12345678") {
-    //   navigate("/admin/products");
-    // }
+    
   };
 
   return (
