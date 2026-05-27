@@ -160,8 +160,7 @@ export default function Home() {
                                 <img
                                     src={cat.image}
                                     alt={cat.name}
-                                    className="w-28 h-29 object-contain rounded-md  "
-                                />
+                                    className="w-full h-30 object-cover"                                />
                             </div>
 
                             <p className="text-x1 font-semibold text-center mt-2 text-gray-900 group-hover:text-blue-600">
