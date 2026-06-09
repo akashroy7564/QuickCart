@@ -115,9 +115,6 @@ export default function Home() {
 
     return (
         <div className="bg-green-50 " >
-
-
-
             {/* NAVBAR */}
             <Navbar
                 search={search}
@@ -128,18 +125,9 @@ export default function Home() {
                 setIson={setIson}
             />
 
-
-
-
             {/* HERO SECTION */}
 
             <HeroSlider />
-
-
-
-
-
-
 
             {/* CATEGORY SECTION Starts */}
             <div className="max-w-7xl mx-auto px-4 py-6">
@@ -174,12 +162,10 @@ export default function Home() {
 
 
 
+                {/* Product grid */}
 
 
-
-
-
-            {/* Product grid */}
+            
             <div className="max-w-7xl  mx-auto px-4 py-10">
 
                 {/* Title */}
@@ -204,7 +190,6 @@ export default function Home() {
                                         alt={p.title}
                                         className="h-64 w-50 object-contain p- transition-transform duration-500 hover:scale-120"
                                     /> </Link>
-
                             </div>
 
                             {/* Info */}
@@ -294,19 +279,11 @@ export default function Home() {
                     </div>
 
                 )}
-
-
-
-
-
-
-
-
             </div>
 
 
             {/* CONTACT SECTION */}
-            <div className="bg-gray-100 py-12">
+            <div className="bg-green-50 py-12">
                 <div className="max-w-xl mx-auto px-4 text-center">
 
                     <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
@@ -354,7 +331,7 @@ export default function Home() {
 
             {/* FOOTER */}
             <footer className="bg-black text-white text-center py-4">
-                <p>© 2026 Laptop Junction | Designed by Akash</p>
+                <p>© 2026 Quick Cart | Designed by Akash Roy</p>
             </footer>
 
         </div>
