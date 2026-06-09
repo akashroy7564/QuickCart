@@ -18,7 +18,6 @@ import Contact from "./admin/Contact.jsx";
 import About from "./pages/About.jsx";
 
 
-
 const router = createBrowserRouter([
   // {path:"/", element: <DemoPage/>},
   {path:"/", element: <Home/>},
@@ -46,6 +45,8 @@ const router = createBrowserRouter([
 }
   
 ])
+
+
 
 export default function App(){
   return <RouterProvider router={router}/>
