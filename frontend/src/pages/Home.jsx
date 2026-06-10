@@ -92,19 +92,20 @@ export default function Home() {
 
     const categories = [
         { name: "Dairy & Bread ", value: "dairy", image: "milk &Dairy.png" },
-        { name: "Vegetables", value: " vegetable", image: "vegetable.png" },
+        { name: "Vegetables", value: "vegetable", image: "vegetable.png" },
         { name: "Cold Drinks & Juices", value: "Beverage", image: "cold-drink.png" },
         { name: "Snack", value: "Snack", image: "snacks.png" },
         { name: "Breakfast & Instant Food", value: "instant-food", image: "maggies.png" },
         { name: "Sweet Tooth", value: "Ice_cream", image: "Ice-Cream.png" },
         { name: "Bakery & Biscuits", value: "Biscuits", image: "biscuits.png" },
-        { name: "Tea, Coffee & Milk Drinks", value: "Tea", image: "tea&Coffee.png" },
+        { name: "Tea, Coffee & Milk Drinks", value: "Tea", image: "Tea&Coffee.png" },
         { name: "Atta, Rice & Dal", value: "Rice", image: "Atta rice.png" },
         { name: "Masala, Oil & Sugar", value: "masala", image: "masala oil.png" },
         { name: "Sauces & Spreads", value: "Sauces", image: "Sauces & Spread.png" },
-        { name: "Cleaning Essentials", value: " House-care", image: "cleaning.png" },
-        { name: "Home & Office", value: "", image: "/icons/home.png" },
-        { name: "personal-care", value: "", image: "/icons/personal.png" },
+        { name: "Cleaning Essentials", value: "House-care", image: "cleaning.png" },
+        { name: "Home & Office", value: "House-care", image: "/icons/home.png" },
+        { name: "personal-care", value: "personal-care", image: "/icons/personal.png" },
+        { name: "Dry-fruits", value: "Dry-fruits", image: "/icons/personal.png" },
     ];
 
 

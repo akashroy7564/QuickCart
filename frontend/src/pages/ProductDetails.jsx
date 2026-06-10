@@ -11,6 +11,7 @@ export default function ProductDetails() {
     const [search, setSearch] = useState("");                //GOing from home
     const [category, setCategory] = useState("");
     const [showMsg, setShowMsg] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
 
     const navigate = useNavigate();
 
@@ -84,14 +85,14 @@ export default function ProductDetails() {
             return;
         }
         const res = await api.post(`/cart/add`, { userId, productId });
-        const total = res.data.cart.items.reduce(
+        const count = res.data.cart.items.reduce(
             (sum, item) => sum + item.productId.price * item.quantity, 0
         );
 
         
         navigate("/cart")
 
-        localStorage.setItem("cartCount", total)
+        localStorage.setItem("cartCount", count)
         window.dispatchEvent(new Event("cartUpdated"));
 
     }

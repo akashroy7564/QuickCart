@@ -82,19 +82,19 @@ export default function Navbar({ search, setSearch, category, setCategory }) {
                     className="w-52 px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
                 >
                     <option value="">All category</option>
-                    <option value="Dairy & Bread">Dairy & Bread</option>
-                    <option value="Vegetables">Vegetables</option>
+                    <option value="dairy">Dairy & Bread</option>
+                    <option value="vegetable">Vegetables</option>
                     <option value="Snack">Snack</option>
-                    <option value="Sweet Tooth">Sweet Tooth</option>
-                    <option value="Breakfast & Instant Food">Breakfast & Instant Food</option>
-                    <option value="Bakery & Biscuits">Bakery & Biscuits</option>
+                    <option value="Ice_cream">Sweet Tooth</option>
+                    <option value="instant-food">Breakfast & Instant Food</option>
+                    <option value="Biscuits">Bakery & Biscuits</option>
                     <option value="Beverage">Beverage</option>
                     <option value="Cooking-Essentials">Cooking-Essentials</option>
-                    <option value="Tea, Coffee & Milk Drinks">Tea,Coffee & Milk Drinks</option>
-                    <option value="Atta, Rice & Dal">Atta, Rice & Dal</option>
+                    <option value="Tea">Tea,Coffee & Milk Drinks</option>
+                    <option value="Rice">Atta, Rice & Dal</option>
                     <option value="masala">Masala, Oil & More</option>
                     <option value="House-care">House-care</option>
-                    <option value="Sauces & Spreads">Sauces & Spreads</option>
+                    <option value="Sauces">Sauces & Spreads</option>
                     <option value="personal-care">personal-care</option>
                     <option value="Dry-fruits">Dry-fruits</option>
                 </select>
