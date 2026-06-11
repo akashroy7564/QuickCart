@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import api from "../api/axios";
 import { Link } from "react-router";
 import Navbar from "../component/Navbar";
+import ProductGrid from "../component/productPage";
 
 
 export default function Product() {
@@ -32,6 +33,7 @@ export default function Product() {
         const userId = localStorage.getItem("userId");
         if (!userId) {
             setShowLoginModal(true)
+            return;
         }
 
         const res = await api.post(`/cart/add`, { userId, productId });
@@ -81,7 +83,7 @@ export default function Product() {
                         className="hover:text-green-600 transition"
                     >
                         Products
-                    </Link>    
+                    </Link>
                 </div>
             </div>
 
@@ -96,65 +98,11 @@ export default function Product() {
                 </h1>
 
                 {/* Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <ProductGrid
+                    products={products}
+                    addToCart={addToCart}
 
-                    {products.map((p) => (
-                        <div
-                            key={p._id}
-                            className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden flex flex-col px-4 py-2"
-                        >
-
-                            {/* Image */}
-                            <div className="h-68 flex items-center justify-center bg-white border border-gray-300 ">
-                                <Link to={`/product/${p._id}`}>
-                                    <img
-                                        src={`http://localhost:5001${p.image}`}
-                                        alt={p.title}
-                                        className="h-64 w-50 object-contain overflow-hidden transition-transform duration-500 hover:scale-120 overflow-hidden"
-                                    /> </Link>
-
-                            </div>
-
-                            {/* Info */}
-                            <div className="p-4 flex flex-col flex-grow">
-
-                                <h3 className="text-lg font-semibold text-gray-800 line-clamp-2">
-                                    {p.title}
-                                </h3>
-
-                                <p className="text-gray-600 leading-relaxed">
-                                    {p.description}
-                                </p>
-
-                                <p className="text-xl font-semibold text-black-400 mt-2">
-                                    ₹{p.price}
-                                </p>
-
-                                {/* Buttons */}
-                                <div className="flex gap-2 mt-auto pt-4">
-
-                                    {/* View Button */}
-                                    {/* <Link to={`/product/${p._id}`} className="w-1/2">
-                                        <button className="w-full border border-gray-300 py-2 rounded-lg hover:bg-gray-100 transition">
-                                            View
-                                        </button>
-                                    </Link> */}
-
-                                    {/* Add Button */}
-                                    <button
-                                        onClick={() => addToCart(p._id)}
-                                        className="w-full border border-red-600 text-red-600 text-xl py-2 rounded-lg hover:bg-red-600 hover:text-white hover:scale-105 transition"
-                                    >
-                                        Add
-                                    </button>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    ))}
-
-                </div>
+                />
 
                 {/* ✅ Toast Message */}
                 {showMsg && (
@@ -164,6 +112,44 @@ export default function Product() {
                 )}
 
             </div>
+
+            {/* SHOW-LOGIN-MODEL  */}
+
+            {showLoginModal && (
+                <div className="fixed inset-0 bg-black/30 backdrop-blur-md flex items-center justify-center z-50">
+
+                        <div className="bg-white/70 rounded-lg shadow-lg p-6 w-80 text-center ">
+
+                            <h2 className="text-xl font-semibold mb-3">
+                                Login Required
+                            </h2>
+
+                            <p className="text-gray-600 mb-5">
+                                Please login first to add products to cart.
+                            </p>
+
+                            <div className="flex justify-center gap-3">
+
+                                <button
+                                    onClick={() => setShowLoginModal(false)}
+                                    className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+                                >
+                                    Cancel
+                                </button>
+
+                                <Link
+                                    to="/login"
+                                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                                >
+                                    Login
+                                </Link>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+            )}
         </div>
     )
 }

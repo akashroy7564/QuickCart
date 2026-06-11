@@ -67,86 +67,124 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#141e30] to-[#243b55]">
+   <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100 flex items-center justify-center px-4">
 
-      <div className="w-[380px] bg-white/10 backdrop-blur-lg p-8 rounded-xl shadow-2xl text-white text-center">
+  <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl border border-green-100 p-8">
 
-        <h2 className="text-2xl font-bold">Welcome Back 👋</h2>
-        <p className="text-gray-300 mb-5">Login to your account</p>
-        {msg && (
-          <div className="mb-4 text-center text-sm text-blue-600 font-medium">{msg}</div>
-        )}
-        {/* SOCIAL LOGIN */}
-        <div className="flex flex-col gap-3">
+    {/* Logo */}
+    <div className="flex flex-col items-center mb-6">
+      <img
+        src="/Logo.png"
+        alt="Quick Cart"
+        className="w-64 object-contain"
+      />
 
-          <button className="flex items-center justify-center gap-2 bg-white text-black py-2 rounded-md cursor-pointer font-semibold hover:bg-gray-200">
-            <img src="google.png" alt="google" className="w-5" />
-            Continue with Google
-          </button>
+      <h2 className="text-2xl font-bold text-gray-800 mt-4">
+        Welcome Back 👋
+      </h2>
 
-          <button className="flex items-center justify-center gap-2 bg-black text-white py-2 rounded-md cursor-pointer font-semibold hover:bg-gray-800">
-            <img src="apple.png" alt="apple" className="w-5" />
-            Continue with Apple
-          </button>
+      <p className="text-gray-500 text-center mt-2">
+        Login to continue shopping fresh groceries
+      </p>
+    </div>
 
-        </div>
-
-        <div className="my-4 text-gray-300 text-sm">OR</div>
-
-        {/* LOGIN FORM */}
-        <form onSubmit={handleLogin} className="flex flex-col gap-3">
-
-          <input
-            name="email"
-            type="email"
-            placeholder="Email Address"
-            className="w-full p-2 rounded-md border border-gray-300 text-black outline-none"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
-
-          <div className="relative">
-            <input
-              name="password"
-              type={showPass ? "text" : "password"}
-              placeholder="Password"
-              className="w-full p-2 rounded-md  border border-gray-300 text-black outline-none"
-              value={form.password}
-              onChange={handleChange}
-              required
-            />
-
-            <span
-              onClick={() => setShowPass(!showPass)}
-              className="absolute right-3 top-2 text-sm cursor-pointer text-white-700"
-            >
-              {showPass ? "Hide" : "Show"}
-            </span>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-yellow-400 text-black  cursor-pointer font-bold py-2 rounded-md hover:bg-orange-500"
-          >
-            Login
-          </button>
-
-        </form>
-
-        <p className="mt-4 text-sm">
-          Don’t have an account?{" "}
-          <span
-            onClick={() => navigate("/signup")}
-            className="text-yellow-400 cursor-pointer font-semibold"
-          >
-            Sign Up
-          </span>
-        </p>
-
+    {msg && (
+      <div className="mb-4 text-center text-sm text-green-700 bg-green-100 py-3 rounded-xl">
+        {msg}
       </div>
+    )}
+
+    {/* Social Login */}
+    <div className="flex flex-col gap-3">
+
+      <button
+        type="button"
+        className="flex items-center justify-center gap-3 border border-gray-300 bg-white py-3 rounded-xl font-medium hover:bg-gray-50 transition"
+      >
+        <img src="google.png" alt="google" className="w-5 h-5" />
+        Continue with Google
+      </button>
+
+      <button
+        type="button"
+        className="flex items-center justify-center gap-3 bg-black text-white py-3 rounded-xl font-medium hover:bg-gray-900 transition"
+      >
+        <img src="apple.png" alt="apple" className="w-5 h-5" />
+        Continue with Apple
+      </button>
 
     </div>
+
+    <div className="flex items-center my-6">
+      <div className="flex-1 h-px bg-gray-300"></div>
+      <span className="px-3 text-gray-500 text-sm">OR</span>
+      <div className="flex-1 h-px bg-gray-300"></div>
+    </div>
+
+    {/* Login Form */}
+    <form onSubmit={handleLogin} className="space-y-4">
+
+      <input
+        name="email"
+        type="email"
+        placeholder="Email Address"
+        value={form.email}
+        onChange={handleChange}
+        required
+        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+      />
+
+      <div className="relative">
+        <input
+          name="password"
+          type={showPass ? "text" : "password"}
+          placeholder="Password"
+          value={form.password}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+
+        <button
+          type="button"
+          onClick={() => setShowPass(!showPass)}
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-green-600 text-sm font-medium"
+        >
+          {showPass ? "Hide" : "Show"}
+        </button>
+      </div>
+
+      <div className="flex justify-end">
+        <button
+          type="button"
+          className="text-sm text-green-600 hover:underline"
+        >
+          Forgot Password?
+        </button>
+      </div>
+
+      <button
+        type="submit"
+        className="w-full bg-green-600 text-white font-semibold py-3 rounded-xl hover:bg-green-700 transition duration-300"
+      >
+        Login
+      </button>
+
+    </form>
+
+    <div className="mt-6 text-center text-gray-600">
+      Don't have an account?
+      <span
+        onClick={() => navigate("/signup")}
+        className="text-green-600 font-semibold ml-2 cursor-pointer hover:underline"
+      >
+        Create Account
+      </span>
+    </div>
+
+  </div>
+
+</div>
   );
 };
 
