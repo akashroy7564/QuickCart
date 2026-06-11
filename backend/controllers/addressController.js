@@ -32,3 +32,9 @@ export const getAddresses= async(req,res)=>{
 
     }
 }
+
+export const deleteAddress=async(req,res)=>{
+    await Address.findByIdAndDelete(req.params.id)
+    res.json({message:"Address Deleted"})
+
+}
