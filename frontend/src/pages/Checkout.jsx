@@ -12,20 +12,29 @@ export default function Checkout() {
 
     const navigate = useNavigate();
 
+    const loadAddress=async (params) => {
+        api.get(`/address/${userId}`).then((res) => {
+            setAddress(res.data)
+            setSelectAddress(res.data[0]);
+        });
+    }
+
 
 
     useEffect(() => {
         if (!userId) {
-            navigate("/home");
+            navigate("/");
             return
         }
         api.get(`/cart/${userId}`).then((res) => setCart(res.data));
-        api.get(`/address/${userId}`).then((res) => {
-            setAddress(res.data)
-            setSelectAddress(res.data[0]);
-        }
-        );
+        loadAddress()
+        
     }, [])
+
+    const handleDelete = async (_id,res) => {
+        await api.delete(`/address/${_id}`)
+        loadAddress()
+    }
 
     if (!cart) {
         return <div>Loding...</div>
@@ -73,15 +82,7 @@ export default function Checkout() {
                 <div className="space-y-4 mb-8">
                     {
                         address.map((addr) => (
-                            // <div
-                            //     key={addr._id}
-                            //     className="border border-gray-200 rounded-lg p-4 hover:border-blue-500 cursor-pointer transition"
-                            // >
-                            //     <p className="font-semibold text-gray-800">{addr.fullName}</p>
-                            //     <p className="text-gray-600">{addr.phone}</p>
-                            //     <p className="text-gray-600">{addr.addressLine}</p>
-                            // </div>
-                            <label key={addr._id} className="block border p-3 rounded cursor-pointer mb-2">
+                            <label key={addr._id} className="relative block border p-3 rounded cursor-pointer mb-2">
                                 <input type="radio" name="address"
                                     checked={selectAddress?._id === addr._id}
                                     onChange={() => setSelectAddress(addr)}
@@ -89,6 +90,12 @@ export default function Checkout() {
                                 <strong>{addr.fullName}</strong>
                                 <p className="font-semibold text-gray-800">{addr.addressLine} {addr.city} {addr.state} {addr.pincode} </p>
                                 <p className="text-sm">{addr.phone}</p>
+                                <button type="button"
+                                    onClick={() => handleDelete(addr._id)}
+                                    className="absolute bottom-2 right-3 bg-red-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-red-700" 
+                                    >
+                                    Delete
+                                </button>
                             </label>
                         ))
                     }
@@ -101,15 +108,15 @@ export default function Checkout() {
                         Order Summary
                     </h2>
 
-                    <div className="flex justify-between text-lg mb-6">
+                    <div className="flex  justify-between text-lg mb-6">
                         <span className="text-gray-600">Total Amount</span>
-                        <span className="font-semibold text-gray-800">
+                        <strong className="font-bold text-lg text-gray-800">
                             ₹{(60 + total)}
-                        </span>
+                        </strong>
                     </div>
 
                     <button onClick={placeOrder}
-                    className="w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition">
+                        className="w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition">
                         Place Order (COD)
                     </button>
 

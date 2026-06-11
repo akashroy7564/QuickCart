@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import api from "../api/axios";
 import { Link } from "react-router";
 import Navbar from "../component/Navbar";
-import ProductGrid from "../component/productPage";
+import ProductGrid from "../component/proudGrid.jsx";
 
 
 export default function Product() {

@@ -4,7 +4,7 @@ import { Link, Navigate, useNavigate } from "react-router";
 import Navbar from "../component/Navbar";
 import HeroSlider from "../component/Hero";
 import { FaWhatsapp } from "react-icons/fa";
-import ProductGrid from "../component/productPage";
+import ProductGrid from "../component/proudGrid.jsx";
 
 
 export default function Home() {

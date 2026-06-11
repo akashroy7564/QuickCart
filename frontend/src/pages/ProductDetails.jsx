@@ -3,6 +3,7 @@ import api from "../api/axios";
 import { useNavigate, useParams } from "react-router";
 import Navbar from "../component/Navbar";
 import { Link } from "react-router";
+import ProductGrid from "../component/proudGrid";
 
 export default function ProductDetails() {
     const { id } = useParams();
@@ -241,65 +242,11 @@ export default function ProductDetails() {
                 </h1>
 
                 {/* Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-
-                    {products.map((p) => (
-                        <div
-                            key={p._id}
-                            className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden flex flex-col px-4 py-2"
-                        >
-
-                            {/* Image */}
-                            <div className="h-74  flex items-center justify-center bg-white border border-gray-300 ">
-                                <Link to={`/product/${p._id}`}>
-                                    <img
-                                        src={`http://localhost:5001${p.image}`}
-                                        alt={p.title}
-                                        className="h-54 w-54 object-contain overflow-hidden transition-transform duration-500 hover:scale-120"
-                                    /> </Link>
-
-                            </div>
-
-                            {/* Info */}
-                            <div className="p-4 flex flex-col flex-grow">
-
-                                <h3 className="text-lg font-semibold text-gray-800 line-clamp-2">
-                                    {p.title}
-                                </h3>
-
-                                <p className="text-gray-600 leading-relaxed">
-                                    {p.description}
-                                </p>
-
-                                <p className="text-xl font-semibold text-black-400 mt-2">
-                                    ₹{p.price}
-                                </p>
-
-                                {/* Buttons */}
-                                <div className="flex gap-2 mt-auto pt-4">
-
-                                    {/* View Button */}
-                                    {/* <Link to={`/product/${p._id}`} className="w-1/2">
-                                        <button className="w-full border border-gray-300 py-2 rounded-lg hover:bg-gray-100 transition">
-                                            View
-                                        </button>
-                                    </Link> */}
-
-                                    {/* Add Button */}
-                                    <button
-                                        onClick={() => addToCart(p._id)}
-                                        className="w-full border border-red-600 text-red-600 text-xl py-2 rounded-lg hover:bg-red-600 hover:text-white hover:scale-105 transition"
-                                    >
-                                        Add
-                                    </button>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    ))}
-
-                </div>
+                
+                <ProductGrid
+                    products={products}
+                    addToCart={addToCart}
+                />
 
                 {/* ✅ Toast Message */}
                 {showMsg && (
