@@ -70,10 +70,10 @@ export default function Home() {
 
             const response = await api.post("/contact", contact);
             setMsg(response.data.message);
-            setTimeout(()=>{
+            setTimeout(() => {
                 setMsg(false);
-            },2000)
-            
+            }, 2000)
+
             setContact({
                 name: "",
                 email: "",
@@ -83,8 +83,33 @@ export default function Home() {
         } catch (err) {
             alert(err);
         }
-
     }
+
+
+
+    const handleClick = async (product) => {
+        const message = `
+            🛒 Product: ${product.title}
+
+            💰 Price: ₹${product.price}
+
+            📝 Description:
+            ${product.description}
+
+            📷 Image:
+            http://localhost:5001${product.image}
+        `;
+
+        console.log(message)
+        const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
+            message
+        )}`;
+
+        window.open(whatsappUrl, "_blank");
+    }
+
+
+
 
 
 
@@ -149,7 +174,7 @@ export default function Home() {
                                 <img
                                     src={cat.image}
                                     alt={cat.name}
-                                    className="w-full h-30 object-cover"                                />
+                                    className="w-full h-30 object-cover" />
                             </div>
 
                             <p className="text-x1 font-semibold text-center mt-2 text-gray-900 group-hover:text-blue-600">
@@ -163,10 +188,10 @@ export default function Home() {
 
 
 
-                {/* Product grid */}
+            {/* Product grid */}
 
 
-            
+
             <div className="max-w-7xl  mx-auto px-4 py-10">
 
                 {/* Title */}
@@ -204,9 +229,18 @@ export default function Home() {
                                     {p.description}
                                 </p>
 
-                                <p className="text-xl font-semibold text-black-400 mt-2">
-                                    ₹{p.price}
-                                </p>
+                                <div className="p-6 flex items-center justify-between">
+
+                                    <p className="text-xl font-semibold text-black-400 mt-2">
+                                        ₹{p.price}
+                                    </p>
+
+                                    <button type="button" 
+                                    className="bg-green-600 rounded-md h-10 w-11"
+                                    onClick={()=>handleClick(p)} >Share</button>
+
+
+                                </div>
 
                                 {/* Buttons */}
                                 <div className="flex gap-2 mt-auto pt-4">

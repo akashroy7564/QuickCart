@@ -16,7 +16,7 @@ import product from "../models/product.js";
 // };
 
 
-//    *----*CREATE PRODUCT USING MULTER *-------*
+    //    *----*CREATE PRODUCT USING MULTER *-------*
 
 export const createProduct = async (req, res) => {
     try {
@@ -46,7 +46,7 @@ export const createProduct = async (req, res) => {
 };
 
 
-// get all product
+            // get all product
 
 export const getProducts = async (req, res) => {
     try {
@@ -72,7 +72,7 @@ export const getProducts = async (req, res) => {
 }
 
 
-// Update products
+            // Update products
 export const updatedProduct = async (req, res) => {
     try {
         const updated = await product.findByIdAndUpdate(
@@ -88,7 +88,7 @@ export const updatedProduct = async (req, res) => {
     }
 }
 
-//Delete Product
+            //Delete Product
 export const deleteProduct = async (req, res) => {
     try {
         await product.findByIdAndDelete(req.params.id);
@@ -97,3 +97,4 @@ export const deleteProduct = async (req, res) => {
         res.status(500).json({ message: " Delete Server Error" })
     }
 }
+
