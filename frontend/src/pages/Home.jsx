@@ -111,9 +111,9 @@ export default function Home() {
         { name: "Masala, Oil & Sugar", value: "masala", image: "masala oil.png" },
         { name: "Sauces & Spreads", value: "Sauces", image: "Sauces & Spread.png" },
         { name: "Cleaning Essentials", value: "House-care", image: "cleaning.png" },
-        { name: "Pan & Cigarette", value: "smoke", image: "/icons/home.png" },
-        { name: "personal-care", value: "personal-care", image: "/icons/personal.png" },
-        { name: "Dry-fruits", value: "Dry-fruits", image: "/icons/personal.png" },
+        { name: "Pan & Cigarette", value: "smoke", image: "cigrate.png" },
+        { name: "personal-care", value: "personal-care", image: "personal-care.png" },
+        { name: "Dry-fruits", value: "Dry-fruits", image: "Dry-fruits.png" },
     ];
 
 
