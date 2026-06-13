@@ -16,6 +16,7 @@ import OrderSuccess from "./pages/OrderSuccess.jsx"
 import Orders from "./admin/Order.jsx";
 import Contact from "./admin/Contact.jsx";
 import About from "./pages/About.jsx";
+import AdminRoute from "./component/AdminRoute.jsx";
 
 
 const router = createBrowserRouter([
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
   
 
   //admin panel
-  {path:"/admin", element:<Admin/>,
+  {path:"/admin", element: (<AdminRoute> <Admin/> </AdminRoute >),
   children:[
   {path:"products", element:<ProductsList/>},
   {path:"products/add", element:<AddProduct/>},

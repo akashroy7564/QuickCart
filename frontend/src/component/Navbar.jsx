@@ -96,6 +96,7 @@ export default function Navbar({ search, setSearch, category, setCategory }) {
                     <option value="House-care">House-care</option>
                     <option value="Sauces">Sauces & Spreads</option>
                     <option value="personal-care">personal-care</option>
+                    <option value="smoke">Pan & Cigarette</option>
                     <option value="Dry-fruits">Dry-fruits</option>
                 </select>
             </div>

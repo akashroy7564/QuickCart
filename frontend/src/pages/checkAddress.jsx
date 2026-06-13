@@ -36,7 +36,6 @@ const saveAddress = async (e) => {
 
     for (let key in form) {
         if (!form[key].trim()) {
-            alert(`${key} is required`);
             setError(`${key} is required`)
             return;
         }
