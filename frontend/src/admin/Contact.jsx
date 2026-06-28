@@ -17,8 +17,6 @@ export default function Contact() {
 
     const deletedMessage = async (id) => {
         await api.delete(`/contact/${id}`)
-        
-
         setMsg(true);
         setTimeout(() => {
             setMsg(false)

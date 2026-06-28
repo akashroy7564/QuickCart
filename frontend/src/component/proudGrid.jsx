@@ -171,7 +171,7 @@ import { FaWhatsapp } from "react-icons/fa";
 export default function ProductGrid({ products, addToCart,}) {
 
 
-        const handleClick = async (product) => {
+        const handleWhatApp = async (product) => {
         const message = `
             🛒 Product: ${product.title}
 
@@ -227,7 +227,7 @@ export default function ProductGrid({ products, addToCart,}) {
                             </p>
 
                             <button
-                                onClick={() => handleClick(p)}
+                                onClick={() => handleWhatApp(p)}
                                 className="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full"
                             >
                                 <FaWhatsapp size={20} />

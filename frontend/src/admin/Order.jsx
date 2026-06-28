@@ -45,6 +45,12 @@ export default function Orders() {
         loadOrders();
     }, []);
 
+
+    const handleDelete=async(id)=>{
+        await api.delete(`/order/${id}`)
+        loadOrders()
+    }
+
     return (
         <div className="p-8">
 
@@ -83,7 +89,7 @@ export default function Orders() {
                                 <tr key={order._id} className="text-center">
 
                                     <td className="border p-2">
-                                        {order._id.slice(-6)}
+                                        {order._id}
                                     </td>
 
                                     <td className="border p-2">
@@ -115,7 +121,11 @@ export default function Orders() {
                                         {new Date(order.createdAt).toLocaleDateString()}
                                     </td>
                                     <td className="border p-2 text-sm">
-                                    <button className="bg-red-500 text-white px-3 py-1 rounded-md text-sm hover:bg-red-600 transition">delete</button>
+                                    <button 
+                                    className="bg-red-500 text-white px-3 py-1 rounded-md text-sm hover:bg-red-600 transition"
+                                    onClick={()=>handleDelete(order._id)}
+                                    >delete
+                                    </button>
                                     
                                     </td>
                                 </tr>

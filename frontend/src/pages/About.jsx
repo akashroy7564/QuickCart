@@ -1,12 +1,51 @@
 import React, { useState } from "react";
 import Navbar from "../component/Navbar";
 import { Link } from "react-router";
+import api from "../api/axios";
 
 
 const About = () => {
 
     const [search, setSearch] = useState("")
     const [category, setCategory] = useState("");
+    const [msg, setMsg] = useState(false)
+    const [contact,setContact]=useState({
+        name:"",
+        email:"",
+        massage:"",
+    })
+
+    const handleChange=(e)=>{
+        setContact({
+            ...contact,
+            [e.target.name]:e.target.value
+        })
+    }
+
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+
+            const response = await api.post("/contact", contact);
+            setMsg(response.data.message);
+            setTimeout(() => {
+                setMsg(false);
+            }, 2000)
+
+            setContact({
+                name: "",
+                email: "",
+                message: ""
+            })
+
+        } catch (err) {
+            alert(err);
+        }
+    }
+
+
+
     return (
         <div className="bg-green-50">
 
@@ -187,6 +226,56 @@ const About = () => {
                 </div>
 
             </div>
+
+
+            {/* CONTACT SECTION */}
+            <div className="bg-green-50 py-12">
+                <div className="max-w-xl mx-auto px-4 text-center">
+
+                    <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
+                    {msg && (
+                        <div className="mb-4 text-center text-sm text-blue-600 font-medium animate-pulse">
+                            {msg}
+                        </div>
+                    )}
+
+                    <form onSubmit={handleFormSubmit}
+                        className="flex flex-col gap-4">
+                        <input
+                            type="text"
+                            name="name"
+                            value={contact.name}
+                            onChange={handleChange}
+                            placeholder="Your Name"
+                            className="p-3 border rounded-md"
+                        />
+
+                        <input
+                            type="email"
+                            name="email"
+                            value={contact.email}
+                            onChange={handleChange}
+                            placeholder="Your Email"
+                            className="p-3 border rounded-md"
+                        />
+
+                        <textarea
+                            name="message"
+                            value={contact.message}
+                            onChange={handleChange}
+                            placeholder="Your Message"
+                            className="p-3 border rounded-md"
+                        ></textarea>
+
+                        <button className=" bg-gradient-to-r from-green-600 to-emerald-700 text-white py-3 rounded-md hover:bg-blue-600">
+                            Send Message
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+
 
         </div>
     );

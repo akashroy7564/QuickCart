@@ -4,7 +4,8 @@ import product from "../models/product.js";
 
 export const placeOrder = async (req, res) => {
     try {
-        const { userId, address } = req.body;
+        const userId = req.user.id;
+        const { address } = req.body;
 
         // get Cart 
         const cart = await Cart.findOne({ userId }).populate("items.productId");
@@ -59,6 +60,34 @@ export const getAllOrders = async (req, res) => {
         console.log(error);
         res.status(500).json({
             message: "Server error"
+        });
+    }
+};
+
+//   deleteOrder
+
+export const deleteOrder = async (req, res) => {
+    await Order.findByIdAndDelete(req.params.id);
+    res.json({ message: "OrderDeleted Successfully" })
+
+
+}
+
+// MY ORDER PAGE
+export const getMyOrders = async (req, res) => {
+    try {
+
+        const orders = await Order.find({
+            userId: req.user.id,
+        })
+            .populate("items.productId", "title image price")
+            .sort({ createdAt: -1 });
+
+        res.json(orders);
+
+    } catch (err) {
+        res.status(500).json({
+            message: "Server Error",
         });
     }
 };

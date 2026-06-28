@@ -17,6 +17,8 @@ import Orders from "./admin/Order.jsx";
 import Contact from "./admin/Contact.jsx";
 import About from "./pages/About.jsx";
 import AdminRoute from "./component/AdminRoute.jsx";
+import MyOrder from "./pages/myOrder.jsx";
+import MyOrders from "./pages/myOrder.jsx";
 
 
 const router = createBrowserRouter([
@@ -31,6 +33,7 @@ const router = createBrowserRouter([
   {path:"/checkout", element: <Checkout/>},
   {path:"/success/:id", element: <OrderSuccess/>},
   {path:"/about",element:<About/>},
+  {path:"/my-order",element:<MyOrders/>},
 
   
 

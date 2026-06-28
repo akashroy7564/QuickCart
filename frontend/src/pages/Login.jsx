@@ -42,6 +42,7 @@ export default function Login() {
       //save token in localStorage
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userId", res.data.user.id);
+      localStorage.setItem("userName", res.data.user.name)
       localStorage.setItem("role", res.data.user.role);
 
 
@@ -100,6 +101,7 @@ export default function Login() {
       <button
         type="button"
         className="flex items-center justify-center gap-3 border border-gray-300 bg-white py-3 rounded-xl font-medium hover:bg-gray-50 transition"
+        onClick={()=>alert("UnderProcess")}
       >
         <img src="google.png" alt="google" className="w-5 h-5" />
         Continue with Google
@@ -108,6 +110,7 @@ export default function Login() {
       <button
         type="button"
         className="flex items-center justify-center gap-3 bg-black text-white py-3 rounded-xl font-medium hover:bg-gray-900 transition"
+        onClick={()=>alert("UnderProcess")}
       >
         <img src="apple.png" alt="apple" className="w-5 h-5" />
         Continue with Apple

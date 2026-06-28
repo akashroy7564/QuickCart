@@ -65,7 +65,7 @@ export default function Home() {
     }
 
 
-    const handleSubmit = async (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
 
         try {
@@ -249,7 +249,7 @@ export default function Home() {
                         </div>
                     )}
 
-                    <form onSubmit={handleSubmit}
+                    <form onSubmit={handleFormSubmit}
                         className="flex flex-col gap-4">
                         <input
                             type="text"
@@ -277,7 +277,7 @@ export default function Home() {
                             className="p-3 border rounded-md"
                         ></textarea>
 
-                        <button className="bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600">
+                        <button className=" bg-gradient-to-r from-green-600 to-emerald-700 text-white py-3 rounded-md hover:bg-blue-600">
                             Send Message
                         </button>
                     </form>
