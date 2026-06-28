@@ -63,6 +63,7 @@ export default function Login() {
 
     } catch (err) {
       setMsg(err.response?.data?.message || "An error occured")
+      console.log(err)
     }
     
   };

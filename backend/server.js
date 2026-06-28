@@ -8,6 +8,9 @@ import cartRoutes from "./routes/cartRoutes.js"
 import addressRoutes from "./routes/addressRoutes.js";
 import orderRoutes from './routes/orderRoutes.js'
 import ContactRoutes from "./routes/ContactRoutes.js"
+import cookieParser from "cookie-parser";
+import morgan from "morgan";
+import helmet from "helmet";
 
 
 
@@ -15,7 +18,15 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    credentials:true,
+    origin: process.env.FRONTEND_URL
+}));
+app.use(cookieParser());
+app.use(morgan())
+app.use(helmet({
+    crossOriginResourcePolicy: false
+}))
 app.use(express.json());
 app.use('/api/auth', authRoutes)
 app.use('/api/products', productsRoutes)
@@ -30,6 +41,9 @@ app.use("/api/contact",ContactRoutes)
 
 connectDB();
 
-app.listen(5001, () => {
-    console.log("backend is running at port 5001");
+const PORT=5001
+
+
+app.listen(PORT, () => {
+    console.log("backend is running at port",PORT);
 })
