@@ -12,7 +12,7 @@ export default function MyOrders() {
             const res = await api.get("/order/my-orders");
             setOrders(res.data);
         } catch (err) {
-            console.log(err);
+            console.log("server error",err);
         }
     };
 
