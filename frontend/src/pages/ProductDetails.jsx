@@ -149,7 +149,7 @@ export default function ProductDetails() {
                 <div className="border border-gray-300 bg-white p-6 rounded-lg flex items-center justify-center overflow-hidden">
                     <img
                         // src={`/${product.image}`}
-                        src={`http://localhost:5001${product.image}`}
+                        src={`https://quickcart-vr1o.onrender.com${product.image}`}
                         alt={product.title}
                         className="w-full max-h-[400px] object-contain transition-transform duration-500 hover:scale-110"
                     />

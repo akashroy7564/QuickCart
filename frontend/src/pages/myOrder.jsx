@@ -79,7 +79,7 @@ export default function MyOrders() {
                                         <div>
                                             <h3>{item.productId.title}</h3>
                                             <img
-                                                src={`http://localhost:5001${item.productId.image}`}
+                                                src={`https://quickcart-vr1o.onrender.com${item.productId.image}`}
                                                 alt={item.productId.title}
                                                 className="w-28 h-28 object-contain"
                                             />

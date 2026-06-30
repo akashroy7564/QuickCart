@@ -181,7 +181,7 @@ export default function ProductGrid({ products, addToCart,}) {
             ${product.description}
 
             📷 Image:
-            http://localhost:5001${product.image}
+            https://quickcart-vr1o.onrender.com${product.image}
         `;
 
         console.log(message)
@@ -205,7 +205,7 @@ export default function ProductGrid({ products, addToCart,}) {
                     <div className="h-78 flex items-center justify-center bg-white border border-gray-300">
                         <Link to={`/product/${p._id}`}>
                             <img
-                                src={`http://localhost:5001${p.image}`}
+                                src={`https://quickcart-vr1o.onrender.com${p.image}`}
                                 alt={p.title}
                                 className="h-64 w-50 object-contain"
                             />

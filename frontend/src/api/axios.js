@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://localhost:5001/api",
+    baseURL: "https://quickcart-vr1o.onrender.com/api/api",
 });
 
 // Automatically attach JWT token

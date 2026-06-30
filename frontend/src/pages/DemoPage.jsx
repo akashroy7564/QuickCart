@@ -68,7 +68,7 @@ export default function DemoPage() {
                         >
 
                             <img
-                                src={`http://localhost:5001${product.image}`}
+                                src={`https://quickcart-vr1o.onrender.com${product.image}`}
                                 alt={product.title}
                                 className="w-64 h-64 object-contain"
                             />
