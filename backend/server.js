@@ -9,7 +9,7 @@ import addressRoutes from "./routes/addressRoutes.js";
 import orderRoutes from './routes/orderRoutes.js'
 import ContactRoutes from "./routes/ContactRoutes.js"
 import cookieParser from "cookie-parser";
-import morgan from "morgan";
+// import morgan from "morgan";
 import helmet from "helmet";
 
 
@@ -23,7 +23,7 @@ app.use(cors({
     origin: process.env.FRONTEND_URL
 }));
 app.use(cookieParser());
-app.use(morgan())
+// app.use(morgan())
 app.use(helmet({
     crossOriginResourcePolicy: false
 }))
